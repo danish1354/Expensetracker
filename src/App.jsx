@@ -6,16 +6,23 @@ import Filters from "./components/Filters";
 import Header from "./components/Header";
 import Main1 from "./components/Main1";
 import SearchBar from "./components/SearchBar";
-import ExpensePopup from "./components/AddExpensePopUp";
+import AddExpensePopup from "./components/AddExpensePopUp";
+import AddBudgetPopUp from "./components/AddBudgetPopUp";
 
 function App() {
   const [isExpenseOpen, setIsExpenseOpen] = useState(false);
+  const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+
   const [expenses, setExpenses] = useState([]);
+  const [budget, setBudget] = useState(0);
 
   const handleAddExpense = (expense) => {
     setExpenses([...expenses, expense]);
-  }
+  };
 
+  const handleAddBudget = (amount) => {
+    setBudget(amount);
+  };
 
   return (
     <div>
@@ -24,16 +31,22 @@ function App() {
       <Main1>
         <Dashboard />
 
-        <Filters onAddExpenseClick={() => setIsExpenseOpen(true)} />
-        
-
-
-
+        <Filters
+          onAddExpenseClick={() => setIsExpenseOpen(true)}
+          onAddBudgetClick={() => setIsBudgetOpen(true)}
+        />
 
         {isExpenseOpen && (
-          <ExpensePopup
+          <AddExpensePopup
             onClose={() => setIsExpenseOpen(false)}
             onAddExpense={handleAddExpense}
+          />
+        )}
+
+        {isBudgetOpen && (
+          <AddBudgetPopUp
+            onClose={() => setIsBudgetOpen(false)}
+            onAddBudget={handleAddBudget}
           />
         )}
       </Main1>
