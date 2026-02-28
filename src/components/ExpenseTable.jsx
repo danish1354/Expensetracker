@@ -24,9 +24,9 @@ export default function ExpenseTable({ expenses }) {
                 <td>₹{item.amount}</td>
 
                 <td>
-                  <button className="editBtn">✏ Edit</button>
+                  <button className="editBtn"> Edit</button>
 
-                  <button className="deleteBtn">🗑 Delete</button>
+                  <button className="deleteBtn"> Delete</button>
                 </td>
               </tr>
             );

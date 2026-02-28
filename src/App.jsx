@@ -39,8 +39,6 @@ function App() {
           onAddBudgetClick={() => setIsBudgetOpen(true)}
         />
 
-        {/* You said: leave space for chart and table (no code here). */}
-
         {isExpenseOpen && (
           <AddExpensePopup
             onClose={() => setIsExpenseOpen(false)}

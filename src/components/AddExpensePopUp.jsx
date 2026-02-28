@@ -10,8 +10,8 @@ export default function AddExpensePopUp({ onAddExpense, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (name == "" && date == "") {
-      alert("enter");
+    if (name.trim() === "" || amount === "" || category.trim() === "") {
+      alert("Enter Details");
     } else {
       onAddExpense({
         id: Date.now(),
