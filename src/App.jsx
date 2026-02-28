@@ -9,13 +9,17 @@ import SearchBar from "./components/SearchBar";
 import AddExpensePopup from "./components/AddExpensePopUp";
 import AddBudgetPopUp from "./components/AddBudgetPopUp";
 import ExpenseTable from "./components/ExpenseTable";
+import { use } from "react";
+import EditPopUp from "./components/EditPopUp";
 
 function App() {
   const [isExpenseOpen, setIsExpenseOpen] = useState(false);
   const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const [expenses, setExpenses] = useState([]);
   const [budget, setBudget] = useState(0);
+  const [edit, setEdit] = useState("");
 
   const handleAddExpense = (expense) => {
     console.log("Expense :", expense);
@@ -53,7 +57,12 @@ function App() {
           />
         )}
 
-        <ExpenseTable expenses={expenses} />
+        {isEditOpen && <EditPopUp onClose={() => setIsEditOpen(false)} />}
+
+        <ExpenseTable
+          expenses={expenses}
+          onAddEditClick={() => setIsEditOpen(true)}
+        />
       </Main1>
     </div>
   );

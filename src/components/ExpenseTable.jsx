@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ExpenseTable({ expenses }) {
+export default function ExpenseTable({ expenses, onAddEditClick }) {
   return (
     <div className="tableContainer">
       <table className="expenseTable">
@@ -24,7 +24,10 @@ export default function ExpenseTable({ expenses }) {
                 <td>₹{item.amount}</td>
 
                 <td>
-                  <button className="editBtn"> Edit</button>
+                  <button className="editBtn" onClick={onAddEditClick}>
+                    {" "}
+                    Edit
+                  </button>
 
                   <button className="deleteBtn"> Delete</button>
                 </td>

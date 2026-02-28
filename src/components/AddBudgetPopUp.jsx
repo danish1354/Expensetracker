@@ -4,17 +4,17 @@ import Popup from "./Popup";
 export default function AddBudgetPopUp({ onClose, onAddBudget }) {
   const [amount, setAmount] = useState("");
 
-  const handleSumbit = (e) => {
-    e.preventDefault();
-    if (amount == "") {
-      alert("enter amount");
-    }
-
-    onAddBudget(Number(amount));
-    {
-      setAmount("");
-    }
-  };
+    const handleSumbit = (e) => {
+      e.preventDefault();
+      if (amount == "") {
+        alert("enter amount");
+      } else {
+        onAddBudget(Number(amount));
+        {
+          setAmount("");
+        }
+      }
+    };
 
   return (
     <Popup title="Add Budget" onClose={onClose}>
