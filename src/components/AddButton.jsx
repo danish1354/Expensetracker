@@ -1,8 +1,17 @@
-import React from 'react'
+// import React from 'react'
 
-export default function AddButton({type, onClick}) {
+// export default function AddButton({type, onClick}) {
 
+//   return (
+//       <button className="Button-Add" onClick={onClick}> + Add {type}</button>
+//   )
+// }
+import React from "react";
+
+export default function AddButton({ type, onClick }) {
   return (
-      <button className="Button-Add" onClick={onClick}> + Add {type}</button>
-  )
+    <button className="btnPrimary" onClick={onClick}>
+      + Add {type}
+    </button>
+  );
 }

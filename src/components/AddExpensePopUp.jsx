@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import Popup from './Popup'
+import React, { useState } from "react";
+import Popup from "./Popup";
 
 export default function AddExpensePopUp({ onAddExpense, onClose }) {
   const [name, setName] = useState("");
@@ -10,54 +10,73 @@ export default function AddExpensePopUp({ onAddExpense, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onAddExpense({
-      id: Date.now(),
-      name,
-      date,
-      category,
-      amount,
-    });
-    setName("");
-    setDate("");
-    setCategory("");
-    setAmount("");
+    if (name == "" && date == "") {
+      alert("enter");
+    } else {
+      onAddExpense({
+        id: Date.now(),
+        name,
+        date,
+        category,
+        amount,
+      });
+      setName("");
+      setDate("");
+      setCategory("");
+      setAmount("");
+    }
   };
+
   return (
-    <div>
-      <Popup title="Add Expense" onClose={onClose}>
-        <form onSubmit={handleSubmit}>
-          <label>Expense Name</label>
+    <Popup title="Add Expense" onClose={onClose}>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="field">
+          <label className="field__label">Expense Name*</label>
           <input
+            className="field__input"
             type="text"
             placeholder="Expense Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+        </div>
 
-          <label>Date</label>
+        <div className="field">
+          <label className="field__label">Date*</label>
           <input
+            className="field__input"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
+        </div>
 
-          <label>Category</label>
+        <div className="field">
+          <label className="field__label">Category*</label>
           <input
+            className="field__input"
             type="text"
+            placeholder="Choose a Category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
+        </div>
 
-          <label>Amount</label>
+        <div className="field">
+          <label className="field__label">Amount*</label>
           <input
+            className="field__input"
             type="number"
+            placeholder="Enter Amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
+        </div>
 
-          <button type="submit">+ Add Expense</button>
-        </form>
-      </Popup>
-    </div>
+        <button className="form__submit" type="submit">
+          + Add Expense
+        </button>
+      </form>
+    </Popup>
   );
 }

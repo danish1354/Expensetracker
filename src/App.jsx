@@ -8,6 +8,7 @@ import Main1 from "./components/Main1";
 import SearchBar from "./components/SearchBar";
 import AddExpensePopup from "./components/AddExpensePopUp";
 import AddBudgetPopUp from "./components/AddBudgetPopUp";
+import ExpenseTable from "./components/ExpenseTable";
 
 function App() {
   const [isExpenseOpen, setIsExpenseOpen] = useState(false);
@@ -17,15 +18,17 @@ function App() {
   const [budget, setBudget] = useState(0);
 
   const handleAddExpense = (expense) => {
+    console.log("Expense :", expense);
     setExpenses([...expenses, expense]);
   };
 
   const handleAddBudget = (amount) => {
+    console.log("Budget", amount);
     setBudget(amount);
   };
 
   return (
-    <div>
+    <div className="app">
       <Header />
 
       <Main1>
@@ -35,6 +38,8 @@ function App() {
           onAddExpenseClick={() => setIsExpenseOpen(true)}
           onAddBudgetClick={() => setIsBudgetOpen(true)}
         />
+
+        {/* You said: leave space for chart and table (no code here). */}
 
         {isExpenseOpen && (
           <AddExpensePopup
@@ -49,6 +54,8 @@ function App() {
             onAddBudget={handleAddBudget}
           />
         )}
+
+        <ExpenseTable expenses={expenses} />
       </Main1>
     </div>
   );

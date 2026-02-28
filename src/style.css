@@ -1,0 +1,356 @@
+/* -------------------- Base -------------------- */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #151515;
+  --muted: #8b909a;
+  --border: #e9e9ee;
+  --shadow: 0 12px 30px rgba(10, 10, 10, 0.08);
+
+  --primary: #4f63ff;
+  --primaryHover: #4156ff;
+  --primarySoft: #eef2ff;
+
+  --radius: 14px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* -------------------- App Layout -------------------- */
+.app{
+  min-height: 100vh;
+}
+
+/* Header */
+.header{
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.header__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+.header__title{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Main */
+.main{
+  padding: 16px 0 40px;
+}
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* -------------------- Dashboard -------------------- */
+.dashboard{
+  padding: 10px 0 8px;
+}
+.dashboard__heading{
+  margin: 10px 0 18px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+/* Summary cards row */
+.summaryRow{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px){
+  .summaryRow{ grid-template-columns: 1fr; }
+}
+
+.budgetCard{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+
+/* first card highlighted like reference */
+.summaryRow .budgetCard:first-child{
+  background: var(--primarySoft);
+  border-color: #dfe4ff;
+}
+
+.budgetCard__title{
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.budgetCard__amount{
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* -------------------- Filters Row -------------------- */
+.filters{
+  margin-top: 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;           /* equal space */
+  
+  flex-wrap: nowrap;
+
+  justify-content: center;  /* center everything */
+}
+.filters__left{
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  flex-wrap: nowrap;
+}
+
+.filters__right{
+  display:flex;
+  gap:15px;
+}
+
+/* Search */
+.search__input{
+  height: 34px;
+  width: 220px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: #fafafa;
+  font-size: 13px;
+}
+.search__input::placeholder{
+  color: #b0b4bb;
+}
+.search__input:focus{
+  background: #fff;
+  border-color: #cfd6ff;
+  box-shadow: 0 0 0 4px rgba(79, 99, 255, 0.12);
+}
+
+/* Pills */
+.filters__pills{
+  display: flex;
+  gap: 10px;
+
+  flex-wrap: nowrap; /* keep in one line */
+}
+
+.pill{
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 700;
+  color: #2b2f36;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+.pill:hover{
+  background: #fafafa;
+  border-color: #dadde6;
+}
+.pill:active{
+  transform: translateY(1px);
+}
+
+/* first pill active like reference */
+.filters__pills .pill:first-child{
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Add Buttons */
+.btnPrimary{
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(79, 99, 255, 0.25);
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(79, 99, 255, 0.18);
+}
+.btnPrimary:hover{
+  background: var(--primaryHover);
+}
+.btnPrimary:active{
+  transform: translateY(1px);
+}
+
+/* -------------------- Popup (Modal) -------------------- */
+.modalOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
+}
+
+.modal{
+  width: 360px;
+  max-width: 100%;
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.modal__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__title{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.modal__close{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+.modal__close:hover{
+  background: #fafafa;
+}
+
+.modal__body{
+  padding: 14px 16px 16px;
+}
+
+/* Form */
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label{
+  font-size: 11px;
+  font-weight: 700;
+  color: #555b66;
+}
+
+.field__input{
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+  background: #fff;
+}
+.field__input:focus{
+  border-color: #cfd6ff;
+  box-shadow: 0 0 0 4px rgba(79, 99, 255, 0.12);
+}
+
+.form__submit{
+  margin-top: 4px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.form__submit:hover{
+  background: var(--primaryHover);
+}
+/* Table Card */
+.tableContainer{
+margin-top:20px;
+background:white;
+border-radius:20px;
+padding:10px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Table */
+.expenseTable{
+width:100%;
+border-collapse:collapse;
+}
+
+/* Table Header */
+.expenseTable th{
+text-align:left;
+padding:15px;
+font-size:14px;
+border-bottom:1px solid #ddd;
+}
+/* Table Rows */
+.expenseTable td{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+/* Edit Button */
+.editBtn{
+background:#e8ecff;
+color:blue;
+border:none;
+padding:8px 14px;
+margin-right:10px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* Delete Button */
+.deleteBtn{
+background:#ffe5e5;
+color:red;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
