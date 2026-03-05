@@ -4,7 +4,7 @@ import Popup from "./Popup";
 export default function AddExpensePopUp({ onAddExpense, onClose }) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("food");
   const [amount, setAmount] = useState("");
 
   const handleSubmit = (e) => {
@@ -20,11 +20,12 @@ export default function AddExpensePopUp({ onAddExpense, onClose }) {
         category,
         amount,
       });
-      setName("");
-      setDate("");
-      setCategory("");
-      setAmount("");
     }
+    setName("");
+    setDate("");
+    setCategory("");
+    setAmount("");
+    console.log(category);
   };
 
   return (
@@ -53,13 +54,18 @@ export default function AddExpensePopUp({ onAddExpense, onClose }) {
 
         <div className="field">
           <label className="field__label">Category*</label>
-          <input
+          <select
             className="field__input"
             type="text"
             placeholder="Choose a Category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-          />
+          >
+            <option value="food">Foods & Drink</option>
+            <option>Groceries</option>
+            <option>Travel</option>
+            <option>Health</option>
+          </select>
         </div>
 
         <div className="field">

@@ -36,7 +36,7 @@ function App() {
       <Header />
 
       <Main1>
-        <Dashboard />
+        <Dashboard budget={budget} expenses={expenses} />
 
         <Filters
           onAddExpenseClick={() => setIsExpenseOpen(true)}
