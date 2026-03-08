@@ -1,3 +1,7 @@
-export default function FilterButton({ label }) {
-  return <button className="pill">{label}</button>;
+export default function FilterButton({ label, onClick }) {
+  return (
+    <button className="pill" onClick={onClick}>
+      {label}
+    </button>
+  );
 }

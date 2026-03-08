@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import Popup from "./Popup";
 
 export default function AddBudgetPopUp({ onClose, onAddBudget }) {
-  const [amount, setAmount] = useState("");
+  const [bamount, setBamount] = useState("");
 
-    const handleSumbit = (e) => {
-      e.preventDefault();
-      if (amount == "") {
-        alert("enter amount");
-      } else {
-        onAddBudget(Number(amount));
-        {
-          setAmount("");
-        }
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    if (bamount == "") {
+      alert("enter amount");
+    } else {
+      onAddBudget(Number(bamount));
+      {
+        setBamount("");
       }
-    };
+    }
+  };
 
   return (
     <Popup title="Add Budget" onClose={onClose}>
@@ -25,8 +25,8 @@ export default function AddBudgetPopUp({ onClose, onAddBudget }) {
             className="field__input"
             type="number"
             placeholder="Enter Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={bamount}
+            onChange={(e) => setBamount(e.target.value)}
           />
         </div>
 

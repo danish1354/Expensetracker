@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
+import AddBudgetPopUp from "./AddBudgetPopUp";
 
-export default function AddExpensePopUp({ onAddExpense, onClose }) {
+export default function AddExpensePopUp({ onAddExpense, onClose, budget }) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  const [category, setCategory] = useState("food");
+  const [category, setCategory] = useState("Food & Drinks");
   const [amount, setAmount] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (budget === 0) {
+      alert("budget cannot be zero");
 
-    if (name.trim() === "" || amount === "" || category.trim() === "") {
-      alert("Enter Details");
+      if (name.trim() === "" || amount === "" || category.trim() === "") {
+        alert("Enter Details");
+      }
     } else {
       onAddExpense({
         id: Date.now(),
@@ -61,10 +64,10 @@ export default function AddExpensePopUp({ onAddExpense, onClose }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="food">Foods & Drink</option>
-            <option>Groceries</option>
-            <option>Travel</option>
-            <option>Health</option>
+            <option value="Food & Drinks">Foods & Drink</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Travel">Travel</option>
+            <option value="Health">Health</option>
           </select>
         </div>
 

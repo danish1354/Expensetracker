@@ -2,14 +2,12 @@ import SearchBar from "./SearchBar";
 import AddButton from "./AddButton";
 import FilterButton from "./FilterButton";
 
-export default function Filters({ onAddExpenseClick, onAddBudgetClick }) {
-  const categories = [
-    "All Expenses",
-    "Food & Drinks",
-    "Groceries",
-    "Travel",
-    "Health",
-  ];
+export default function Filters({
+  onAddExpenseClick,
+  onAddBudgetClick,
+  onCategoryClick,
+}) {
+  const categories = ["All", "Food & Drinks", "Groceries", "Travel", "Health"];
 
   return (
     <section className="filters">
@@ -18,7 +16,11 @@ export default function Filters({ onAddExpenseClick, onAddBudgetClick }) {
 
         <div className="filters__pills">
           {categories.map((c) => (
-            <FilterButton key={c} label={c} />
+            <FilterButton
+              key={c}
+              label={c}
+              onClick={() => onCategoryClick(c)}
+            />
           ))}
         </div>
       </div>
