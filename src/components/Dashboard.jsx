@@ -8,7 +8,7 @@ export default function Dashboard({ AddBudgetPopUp, budget, expenses }) {
   const remainingBudget = budget - totalExpense;
   return (
     <section className="dashboard">
-      <h1 className="dashboard__heading">Hello, Danish</h1>
+      <h1 className="dashboard__heading">Hello, Danish Ansari</h1>
 
       <div className="summaryRow">
         <BudgetSummaryCard title="Total Budget" amount={budget} />
